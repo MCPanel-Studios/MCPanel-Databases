@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcpanel-addon-databases"
+version = "1.0.0"
+description = "Databases page for MCPanel / MCPanel-WebUI: MySQL & MariaDB accounts, databases, tables and rows (an MCPanel-CLI addon)"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "GPL-3.0-or-later" }
+authors = [{ name = "DippyCoder", email = "dippycoder@gmail.com" }]
+keywords = ["minecraft", "mcpanel", "mysql", "mariadb", "addon"]
+
+[project.urls]
+Source = "https://github.com/DippyCoder/MCPanel-Databases"
+
+# How MCPanel-CLI discovers pip-installed addons: the entry-point name is the
+# addon name (`mcpanel addons enable|disable databases`).
+[project.entry-points."mcpanel.addons"]
+databases = "mcpanel_databases"
+
+# The source folder is `databases/` so `mcpanel addons install <this repo>/databases`
+# installs it under the right name; as a pip package it's importable as
+# `mcpanel_databases` instead, to keep a generic name out of site-packages.
+[tool.setuptools]
+packages = ["mcpanel_databases"]
+package-dir = { "mcpanel_databases" = "databases" }
+
+# The page's script and stylesheet, read by `mcpanel api addons ui`.
+[tool.setuptools.package-data]
+mcpanel_databases = ["ui/*.js", "ui/*.css"]

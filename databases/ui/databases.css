@@ -1,0 +1,50 @@
+/* MCPanel-Databases - the Databases page. The table grid and the shared list
+   rows (.db-item, .db-table-item, .db-section-title, .db-muted, …) are the
+   panel's own, from its table editor. Theme variables only, so every theme
+   applies. */
+
+.db-layout { display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 16px; align-items: start; }
+.db-sidebar { max-height: calc(100vh - 170px); overflow-y: auto; padding-bottom: 8px; }
+.db-main { min-height: 320px; }
+.db-main .empty-state { padding: 70px 20px; }
+@media (max-width: 900px) { .db-layout { grid-template-columns: 1fr; } }
+
+/* account groups */
+.db-group-title { display: flex; align-items: center; gap: 6px; padding: 8px 14px 3px; font-size: 11.5px; color: var(--text-muted); }
+.db-group-title .db-item-name { color: var(--text-secondary); }
+.db-conn { cursor: pointer; padding-bottom: 6px; }
+.db-conn:hover { color: var(--text-secondary); }
+.db-conn.open .db-chevron { transform: rotate(90deg); }
+.db-divider { height: 1px; margin: 6px 14px; background: var(--border); }
+.db-tag {
+  margin-left: 4px; padding: 0 5px; border-radius: 4px; font-size: 10px;
+  color: var(--text-accent); border: 1px solid rgba(var(--accent-rgb), 0.35);
+}
+
+/* database rows, with a pencil on hover */
+.db-row { position: relative; }
+.db-row .db-item { padding-right: 34px; }
+.db-icon-btn {
+  display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; flex-shrink: 0;
+  margin-left: auto; padding: 0; border: none; border-radius: 4px; background: none; color: var(--text-muted); cursor: pointer;
+}
+.db-icon-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+.db-row-edit { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); opacity: 0; }
+.db-row:hover .db-row-edit, .db-row-edit:focus-visible { opacity: 1; }
+.db-indent { padding-left: 40px; }
+.db-muted a { color: var(--text-accent); }
+
+/* "New database" / "Add account" */
+.db-add { margin-top: 4px; color: var(--text-accent); }
+.db-add[data-act="new-db"] { margin-top: 0; }
+.db-add-icon { display: inline-flex; width: 14px; justify-content: center; flex-shrink: 0; }
+
+/* other database servers, listed only */
+.db-engine { display: flex; align-items: center; gap: 7px; padding: 6px 14px; font-size: 12.5px; color: var(--text-secondary); }
+
+/* dialogs */
+.dbx-sub { margin-top: 2px; font-size: 11.5px; color: var(--text-muted); font-family: var(--font-mono); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dbx-status { display: block; font-size: 12px; line-height: 1.6; }
+.dbx-status code { font-family: var(--font-mono); font-size: 11.5px; }
+.db-status-ok { padding-top: 6px; color: var(--online-color); }
+.db-status-err { padding-top: 6px; color: var(--log-error); }
