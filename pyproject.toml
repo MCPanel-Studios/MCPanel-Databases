@@ -13,7 +13,7 @@ authors = [{ name = "DippyCoder", email = "dippycoder@gmail.com" }]
 keywords = ["minecraft", "mcpanel", "mysql", "mariadb", "addon"]
 
 [project.urls]
-Source = "https://github.com/DippyCoder/MCPanel-Databases"
+Source = "https://github.com/MCPanel-Studios/MCPanel-Databases"
 
 # How MCPanel-CLI discovers pip-installed addons: the entry-point name is the
 # addon name (`mcpanel addons enable|disable databases`).
